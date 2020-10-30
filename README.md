@@ -8,5 +8,6 @@ TODO:
 - checkbox for "only current available recipes"
 - hide json output in collapsible debug area
 - make output bp string copy button
+- not use ------- as delimiter
 
 - read inserter/machines/chests from cheat command and include in dump (would make many advanced settings obsolete)
