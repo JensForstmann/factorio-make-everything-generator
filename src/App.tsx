@@ -14,11 +14,47 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import copy from 'copy-to-clipboard';
+import VerticalAlignBottomIcon from '@material-ui/icons/VerticalAlignBottom';
+
+import VanillaRecipes from './VanillaRecipes';
 
 import './App.css';
 
 import Pako from 'pako';
 
+const command = `/c local recipes = ""
+for _, recipe in pairs(game.player.force.recipes) do
+    local recipe_prototype = recipe.prototype
+    local recipe = "-----\\n"
+        .. "name: " .. recipe_prototype.name .. "\\n"
+        .. "enabled: " .. tostring(recipe.enabled) .. "\\n"
+        .. "hidden: " .. tostring(recipe.hidden) .. "\\n"
+        .. "unlock_results: " .. tostring(recipe_prototype.unlock_results) .. "\\n"
+        .. "category: " .. recipe_prototype.category .. "\\n"
+        .. "order: " .. recipe_prototype.order .. "\\n"
+        .. "energy: " .. recipe_prototype.energy .. "\\n"
+        .. "group_name: " .. recipe_prototype.group.name .. "\\n"
+        .. "group_order: " .. recipe_prototype.group.order .. "\\n"
+        .. "subgroup_name: " .. recipe_prototype.subgroup.name .. "\\n"
+        .. "subgroup_order: " .. recipe_prototype.subgroup.order .. "\\n"
+        .. "request_paste_multiplier: " .. recipe_prototype.request_paste_multiplier .. "\\n"
+    if recipe_prototype.main_product then
+        recipe = recipe
+            .. "main_product: " .. recipe_prototype.main_product.name .. "\\n"
+        if game.item_prototypes[recipe_prototype.main_product.name] then
+            recipe = recipe
+                .. "main_product_stack_size: " .. game.item_prototypes[recipe_prototype.main_product.name].stack_size .. "\\n"
+        end
+    end
+        
+    for _, ing in pairs(recipe_prototype.ingredients) do
+        if game.item_prototypes[ing.name] then
+            recipe = recipe .. "item_ingredient_name: " .. ing.amount .. " " .. ing.name .. "\\n"
+        end
+    end
+    recipes = recipes .. "\\n" .. recipe
+end
+game.write_file("recipes_dump.txt", recipes)`;
 
 type Recipe = {
     name: string
@@ -79,34 +115,8 @@ function parse(input: string) {
         return a.group_order > b.group_order ? 1 : -1;
     });
 
-    // const categories: Categories = {};
-    // recipes.forEach((recipe) => {
-    //     if (!categories[recipe.category]) {
-    //         categories[recipe.category] = {};
-    //     }
-    // });
-
-    // const groups: Groups = {};
-    // recipes.forEach((recipe) => {
-    //     if (!groups[recipe.group_name]) {
-    //         groups[recipe.group_name] = {
-    //             order: recipe.group_order,
-    //             subgroups: []
-    //         };
-    //     }
-
-    //     if (groups[recipe.group_name].subgroups.filter((sg) => sg.name === recipe.subgroup_name).length === 0) {
-    //         groups[recipe.group_name].subgroups.push({
-    //             name: recipe.subgroup_name,
-    //             order: recipe.subgroup_order
-    //         });
-    //     }
-    // });
-
     return {
         recipes,
-        // categories,
-        // groups
     };
 }
 
@@ -310,7 +320,7 @@ function App() {
         parseIt(inputRef.current?.value as string || "");
     };
 
-    const [expandedAccordion, setExpandedAccordion] = React.useState<string | false>("CHEAT COMMAND");
+    const [expandedAccordion, setExpandedAccordion] = React.useState<string | false>("MODDED QUESTION");
     const changeAccordion = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
         setExpandedAccordion(isExpanded ? panel : false);
     };
@@ -319,17 +329,58 @@ function App() {
 
     const [debugInfo, setDebugInfo] = useState<any>({});
 
+    // const [modded, setModded] = useState<boolean>(false);
+
+    function changeModded(isModded: boolean) {
+        // setModded(isModded);
+        if (isModded) {
+            setExpandedAccordion('CHEAT COMMAND');
+        } else {
+            parseIt(VanillaRecipes);
+            setExpandedAccordion('RECIPES');
+        }
+    }
+
     return (
         <>
+            <Accordion expanded={expandedAccordion === 'MODDED QUESTION'} onChange={changeAccordion('MODDED QUESTION')}>
+                <AccordionSummary>MODDED?</AccordionSummary>
+                <AccordionDetails style={{ display: "block" }}>
+                    <Typography>
+                        Do you have moddeds items/recipes? Or do you play vanilla?
+                    </Typography>
+                    <div>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => changeModded(true)}
+                        >
+                            Modded
+                        </Button>
+                        &nbsp;
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => changeModded(false)}
+                        >
+                            Vanilla
+                        </Button>
+                    </div>
+                </AccordionDetails>
+            </Accordion>
             <Accordion expanded={expandedAccordion === 'CHEAT COMMAND'} onChange={changeAccordion('CHEAT COMMAND')}>
                 <AccordionSummary>CHEAT COMMAND</AccordionSummary>
                 <AccordionDetails style={{ display: "block" }}>
                     <Typography>
-                        Execute this cheat command and find a "recipes_dump.txt" afterwards in your script-output folder of Factorio:
+                        Execute this cheat command ingame and find a "recipes_dump.txt" afterwards in your script-output folder of Factorio:
                     </Typography>
-                    <Typography>
-                        ... command will go here...
-                    </Typography>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => copy(command)}
+                    >
+                        <FileCopyIcon /> Copy Cheat Command
+                    </Button>
                 </AccordionDetails>
             </Accordion>
             <Accordion expanded={expandedAccordion === 'INPUT'} onChange={changeAccordion('INPUT')}>
@@ -343,16 +394,19 @@ function App() {
                         >
                             {({ getRootProps, getInputProps }) => (
                                 <section>
-                                    <div {...getRootProps()}>
+                                    <div className="dropzone" {...getRootProps()}>
                                         <input {...getInputProps()} />
-                                        <p>drag & drop recipes_dump.txt file here or click to select file</p>
+                                        <p>drag & drop recipes_dump.txt file here</p>
+                                        <p><VerticalAlignBottomIcon fontSize="large"/></p>
+                                        <p>or click to select file</p>
                                     </div>
                                 </section>
                             )}
                         </Dropzone>
                     </div>
                     <div>
-                        <Button variant="contained" color="primary" onClick={handleClickOpen}>
+                        <p>Or you can simply copy the content and paste it:</p>
+                        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
                             Paste content
                         </Button>
                         <Dialog
