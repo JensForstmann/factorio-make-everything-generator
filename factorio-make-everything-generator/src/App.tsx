@@ -1,7 +1,19 @@
-import { TextField } from '@material-ui/core';
-import React, { useState } from 'react';
+import { TextField, TextFieldProps } from '@material-ui/core';
+import React, { useRef, useState } from 'react';
 import Dropzone from 'react-dropzone'
 import MUIDataTable from "mui-datatables";
+import Accordion from '@material-ui/core/Accordion';
+import AccordionDetails from '@material-ui/core/AccordionDetails';
+import AccordionSummary from '@material-ui/core/AccordionSummary';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
+import copy from 'copy-to-clipboard';
 
 import './App.css';
 
@@ -25,22 +37,6 @@ type Recipe = {
     main_product_stack_size: number
     item_ingredients: string[];
 };
-
-// type Categories = {
-//     [key: string]: {}
-// }
-
-// type Group = {
-//     order: string;
-//     subgroups: {
-//         name: string;
-//         order: string;
-//     }[]
-// }
-// type Groups = {
-//     [key: string]: Group
-// }
-
 
 function parse(input: string) {
     const recipesInput = input.split("-----");
@@ -260,27 +256,21 @@ function generateOutput(filteredRecipes: Recipe[]) {
 function App() {
     async function onNewFile(files: File[]) {
         if (files.length === 1) {
-            onNewInput(await files[0].text());
+            parseIt(await files[0].text());
         }
     }
 
-    function onNewInput(input: string) {
-        // const { categories, groups, recipes } = parse(input);
-        const { recipes } = parse(input);
-        setInput(input);
-        // setCategories(categories);
-        // setGroups(groups);
+    function parseIt(_input: string) {
+        const { recipes } = parse(_input);
         setRecipes(recipes);
         setFilteredRecipes([]);
+        setExpandedAccordion('RECIPES');
     }
 
     function updateFilteredRecipes(selectedRecipes: number[]) {
         setFilteredRecipes(recipes.filter((recipe, index) => selectedRecipes.includes(index)));
     }
 
-    const [input, setInput] = useState('');
-    // const [categories, setCategories] = useState<Categories>({});
-    // const [groups, setGroups] = useState<Groups>({});
     const [recipes, setRecipes] = useState<Recipe[]>([]);
     const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>([]);
 
@@ -309,74 +299,156 @@ function App() {
         }
     ];
 
-    const { bpObject, bpString } = generateOutput(filteredRecipes);
+    const [inputDialogOpen, setInputDialogOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setInputDialogOpen(true);
+    };
+
+    const handleClose = () => {
+        setInputDialogOpen(false);
+        parseIt(inputRef.current?.value as string || "");
+    };
+
+    const [expandedAccordion, setExpandedAccordion] = React.useState<string | false>("CHEAT COMMAND");
+    const changeAccordion = (panel: string) => (event: React.ChangeEvent<{}>, isExpanded: boolean) => {
+        setExpandedAccordion(isExpanded ? panel : false);
+    };
+
+    const inputRef = useRef<TextFieldProps>();
+
+    const [debugInfo, setDebugInfo] = useState<any>({});
 
     return (
-        <div>
-            <div className="content">
-                <Dropzone
-                    onDrop={files => onNewFile(files)}
-                    multiple={false}
-                    accept='text/plain'
-                >
-                    {({ getRootProps, getInputProps }) => (
-                        <section>
-                            <div {...getRootProps()}>
-                                <input {...getInputProps()} />
-                                <p>drag & drop recipes_dump.txt file here or click to select file</p>
-                            </div>
-                        </section>
-                    )}
-                </Dropzone>
+        <>
+            <Accordion expanded={expandedAccordion === 'CHEAT COMMAND'} onChange={changeAccordion('CHEAT COMMAND')}>
+                <AccordionSummary>CHEAT COMMAND</AccordionSummary>
+                <AccordionDetails style={{ display: "block" }}>
+                    <Typography>
+                        Execute this cheat command and find a "recipes_dump.txt" afterwards in your script-output folder of Factorio:
+                    </Typography>
+                    <Typography>
+                        ... command will go here...
+                    </Typography>
+                </AccordionDetails>
+            </Accordion>
+            <Accordion expanded={expandedAccordion === 'INPUT'} onChange={changeAccordion('INPUT')}>
+                <AccordionSummary>INPUT</AccordionSummary>
+                <AccordionDetails style={{ display: "block" }}>
+                    <div>
+                        <Dropzone
+                            onDrop={files => onNewFile(files)}
+                            multiple={false}
+                            accept='text/plain'
+                        >
+                            {({ getRootProps, getInputProps }) => (
+                                <section>
+                                    <div {...getRootProps()}>
+                                        <input {...getInputProps()} />
+                                        <p>drag & drop recipes_dump.txt file here or click to select file</p>
+                                    </div>
+                                </section>
+                            )}
+                        </Dropzone>
+                    </div>
+                    <div>
+                        <Button variant="contained" color="primary" onClick={handleClickOpen}>
+                            Paste content
+                        </Button>
+                        <Dialog
+                            open={inputDialogOpen}
+                            onClose={handleClose}
+                        >
+                            <DialogTitle>Paste Content</DialogTitle>
+                            <DialogContent>
+                                <DialogContentText>
+                                    Paste content of recipes_dump.txt and press continue.
+                                </DialogContentText>
+                                <TextField
+                                    placeholder="paste content of recipes_dump.txt here"
+                                    multiline
+                                    variant="filled"
+                                    inputRef={inputRef}
+                                    rowsMax={10}
+                                />
+                            </DialogContent>
+                            <DialogActions>
+                                <Button onClick={handleClose} color="primary">
+                                    Continue
+                                </Button>
+                            </DialogActions>
+                        </Dialog>
+                    </div>
+                </AccordionDetails>
+            </Accordion>
 
-                ... or ...
-
-                <TextField
-                    label="String Input"
-                    placeholder="paste content of recipes_dump.txt here"
-                    multiline
-                    variant="filled"
-                    value={input}
-                    onChange={(e) => (onNewInput(e.currentTarget.value))}
-                    rowsMax={10}
-                />
-
-                <MUIDataTable
-                    title={"Recipes"}
-                    data={recipes}
-                    columns={tableColumns}
-                    options={{
-                        filterType: 'multiselect',
-                        download: false,
-                        print: false,
-                        viewColumns: false,
-                        selectToolbarPlacement: 'none',
-                        onRowSelectionChange: (currentRowsSelected, allRowsSelected, rowsSelected) => updateFilteredRecipes(rowsSelected as number[]),
-                    }}
-                />
-
-                <div>
-                    <p>... settings here ...</p>
-                </div>
-
-                <div>
-                    <TextField
-                        label="BP Object"
-                        multiline
-                        variant="filled"
-                        value={filteredRecipes.length > 0 ? JSON.stringify(bpObject, null, 2) : ''}
-                        rowsMax={10}
+            <Accordion expanded={expandedAccordion === 'RECIPES'} onChange={changeAccordion('RECIPES')}>
+                <AccordionSummary>RECIPES</AccordionSummary>
+                <AccordionDetails style={{ display: "block" }}>
+                    <MUIDataTable
+                        title={"Recipes"}
+                        data={recipes}
+                        columns={tableColumns}
+                        options={{
+                            filterType: 'multiselect',
+                            download: false,
+                            print: false,
+                            viewColumns: false,
+                            selectToolbarPlacement: 'none',
+                            onRowSelectionChange: (currentRowsSelected, allRowsSelected, rowsSelected) => updateFilteredRecipes(rowsSelected as number[]),
+                        }}
                     />
-                    <TextField
-                        label="BP String"
-                        multiline
-                        variant="filled"
-                        value={filteredRecipes.length > 0 ? bpString : ''}
-                        rowsMax={10}
-                    />
-                </div>
-            </div>
-        </div>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expandedAccordion === 'SETTINGS'} onChange={changeAccordion('SETTINGS')}>
+                <AccordionSummary>SETTINGS</AccordionSummary>
+                <AccordionDetails style={{ display: "block" }}>
+                    <Typography>settings here</Typography>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expandedAccordion === 'GENERATE'} onChange={changeAccordion('GENERATE')}>
+                <AccordionSummary>GENERATE</AccordionSummary>
+                <AccordionDetails style={{ display: "block" }}>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={() => {
+                            const { bpObject, bpString } = generateOutput(filteredRecipes);
+                            copy(bpString);
+                            setDebugInfo({ bpObject, bpString });
+                        }}
+                    >
+                        <FileCopyIcon /> Copy Blueprint
+                    </Button>
+                </AccordionDetails>
+            </Accordion>
+
+            <Accordion expanded={expandedAccordion === 'DEBUG AREA'} onChange={changeAccordion('DEBUG AREA')}>
+                <AccordionSummary>DEBUG AREA</AccordionSummary>
+                <AccordionDetails style={{ display: "block" }}>
+                    <div>
+                        <TextField
+                            label="BP Object"
+                            multiline
+                            variant="filled"
+                            value={JSON.stringify(debugInfo.bpObject, null, 2)}
+                            rowsMax={10}
+                        />
+                    </div>
+                    <div>
+                        <TextField
+                            label="BP String"
+                            multiline
+                            variant="filled"
+                            value={debugInfo.bpString}
+                            rowsMax={10}
+                        />
+                    </div>
+                </AccordionDetails>
+            </Accordion>
+        </>
     );
 }
 
