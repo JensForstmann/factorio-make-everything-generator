@@ -430,14 +430,19 @@ function App() {
     return (
         <>
             <div id="header">
-                <h1>Factorio "Make Everything" Generator</h1>
+                <h1>"Make Everything" Generator for Factorio</h1>
+                <p>
+                This app can be used to build bot based malls/hubs.
+                <br/><br/>
+                It's under development and still in an early stage.
+                </p>
             </div>
             <div id="body">
                 <Accordion expanded={expandedAccordion === 'MODDED QUESTION'} onChange={changeAccordion('MODDED QUESTION')}>
-                    <AccordionSummary>MODDED?</AccordionSummary>
+                    <AccordionSummary>MODDED? VANILLA?</AccordionSummary>
                     <AccordionDetails style={{ display: "block" }}>
                         <Typography>
-                            Do you have moddeds items/recipes? Or do you play vanilla?
+                            Do you have modded items/recipes? Or do you play vanilla?
                     </Typography>
                         <div>
                             <Button
