@@ -1,4 +1,4 @@
-import { TextField, TextFieldProps } from '@material-ui/core';
+import { Checkbox, FormControlLabel, TextField, TextFieldProps } from '@material-ui/core';
 import React, { useRef, useState } from 'react';
 import Dropzone from 'react-dropzone'
 import MUIDataTable from "mui-datatables";
@@ -74,6 +74,26 @@ type Recipe = {
     item_ingredients: string[];
 };
 
+type Settings = {
+    machineName: string;
+    machineWidth: number;
+    machineHeight: number;
+    machineSpeed: number;
+    rowLength: number;
+    machineSpace: number;
+    rowSpace: number;
+    sourceChestName: string;
+    requestFromBuffers: boolean;
+    sourceChestWidth: number;
+    sourceChestHeight: number;
+    targetChestName: string;
+    targetChestSetRequest: boolean;
+    targetChestWidth: number;
+    targetChestHeight: number;
+    inserterName: string;
+    outserterName: string;
+};
+
 function parse(input: string) {
     const recipesInput = input.split("-----");
 
@@ -120,25 +140,26 @@ function parse(input: string) {
     };
 }
 
-function generateOutput(filteredRecipes: Recipe[]) {
-
-    const machineName = 'assembling-machine-3';
-    const machineWidth = 3;
-    const machineHeight = 3;
-    const machineSpeed = 1.25;
-    const rowLength = 4;
-    const machineSpace = 0;
-    const rowSpace = 0;
-    const sourceChestName = 'logistic-chest-requester';
-    const requestFromBuffers = true;
-    const sourceChestWidth = 1;
-    const sourceChestHeight = 1;
-    const targetChestName = 'logistic-chest-buffer';
-    const targetChestSetRequest = true;
-    const targetChestWidth = 1;
-    const targetChestHeight = 1;
-    const inserterName = 'stack-inserter';
-    const outserterName = 'stack-inserter';
+function generateOutput(filteredRecipes: Recipe[], settings: Settings) {
+    const {
+        machineName,
+        machineWidth,
+        machineHeight,
+        machineSpeed,
+        rowLength,
+        machineSpace,
+        rowSpace,
+        sourceChestName,
+        requestFromBuffers,
+        sourceChestWidth,
+        sourceChestHeight,
+        targetChestName,
+        targetChestSetRequest,
+        targetChestWidth,
+        targetChestHeight,
+        inserterName,
+        outserterName
+    } = settings;
 
     const bpObject = {
         "blueprint": {
@@ -341,6 +362,48 @@ function App() {
         }
     }
 
+    const settingsRef = {
+        machineName: useRef<TextFieldProps>(),
+        machineWidth: useRef<TextFieldProps>(),
+        machineHeight: useRef<TextFieldProps>(),
+        machineSpeed: useRef<TextFieldProps>(),
+        rowLength: useRef<TextFieldProps>(),
+        machineSpace: useRef<TextFieldProps>(),
+        rowSpace: useRef<TextFieldProps>(),
+        sourceChestName: useRef<TextFieldProps>(),
+        requestFromBuffers: useRef<HTMLInputElement | null>(null),
+        sourceChestWidth: useRef<TextFieldProps>(),
+        sourceChestHeight: useRef<TextFieldProps>(),
+        targetChestName: useRef<TextFieldProps>(),
+        targetChestSetRequest: useRef<HTMLInputElement | null>(null),
+        targetChestWidth: useRef<TextFieldProps>(),
+        targetChestHeight: useRef<TextFieldProps>(),
+        inserterName: useRef<TextFieldProps>(),
+        outserterName: useRef<TextFieldProps>(),
+    }
+
+    function settingsRefToSettings(): Settings {
+        return {
+            machineName: settingsRef.machineName.current?.value as string || 'assembling-machine-3',
+            machineWidth: parseInt(settingsRef.machineWidth.current?.value as string) || 3,
+            machineHeight: parseInt(settingsRef.machineHeight.current?.value as string) || 3,
+            machineSpeed: parseFloat(settingsRef.machineSpeed.current?.value as string) || 1.25,
+            rowLength: parseInt(settingsRef.rowLength.current?.value as string) || 5,
+            machineSpace: parseInt(settingsRef.machineSpace.current?.value as string) || 0,
+            rowSpace: parseInt(settingsRef.rowSpace.current?.value as string) || 0,
+            sourceChestName: settingsRef.sourceChestName.current?.value as string || 'logistic-chest-requester',
+            requestFromBuffers: settingsRef.requestFromBuffers.current?.checked ?? true,
+            sourceChestWidth: parseInt(settingsRef.sourceChestWidth.current?.value as string) || 1,
+            sourceChestHeight: parseInt(settingsRef.sourceChestHeight.current?.value as string) || 1,
+            targetChestName: settingsRef.targetChestName.current?.value as string || 'logistic-chest-buffer',
+            targetChestSetRequest: settingsRef.targetChestSetRequest.current?.checked ?? true,
+            targetChestWidth: parseInt(settingsRef.targetChestWidth.current?.value as string) || 1,
+            targetChestHeight: parseInt(settingsRef.targetChestHeight.current?.value as string) || 1,
+            inserterName: settingsRef.inserterName.current?.value as string || 'stack-inserter',
+            outserterName: settingsRef.outserterName.current?.value as string || 'stack-inserter',
+        }
+    }
+
     return (
         <>
             <Accordion expanded={expandedAccordion === 'MODDED QUESTION'} onChange={changeAccordion('MODDED QUESTION')}>
@@ -397,7 +460,7 @@ function App() {
                                     <div className="dropzone" {...getRootProps()}>
                                         <input {...getInputProps()} />
                                         <p>drag & drop recipes_dump.txt file here</p>
-                                        <p><VerticalAlignBottomIcon fontSize="large"/></p>
+                                        <p><VerticalAlignBottomIcon fontSize="large" /></p>
                                         <p>or click to select file</p>
                                     </div>
                                 </section>
@@ -411,7 +474,7 @@ function App() {
                         </Button>
                         <Dialog
                             open={inputDialogOpen}
-                            onClose={handleClose}
+                            onClose={() => setInputDialogOpen(false)}
                         >
                             <DialogTitle>Paste Content</DialogTitle>
                             <DialogContent>
@@ -458,7 +521,139 @@ function App() {
             <Accordion expanded={expandedAccordion === 'SETTINGS'} onChange={changeAccordion('SETTINGS')}>
                 <AccordionSummary>SETTINGS</AccordionSummary>
                 <AccordionDetails style={{ display: "block" }}>
-                    <Typography>settings here</Typography>
+                    <div>
+                        <p>Machine</p>
+                        <TextField
+                            label="machine name"
+                            variant="filled"
+                            inputRef={settingsRef.machineName}
+                            defaultValue='assembling-machine-3'
+                        />
+                        <TextField
+                            label="machine width"
+                            variant="filled"
+                            inputRef={settingsRef.machineWidth}
+                            defaultValue='3'
+                            type="number"
+                        />
+                        <TextField
+                            label="machine height"
+                            variant="filled"
+                            inputRef={settingsRef.machineHeight}
+                            defaultValue='3'
+                            type="number"
+                        />
+                        <TextField
+                            label="machine speed"
+                            variant="filled"
+                            inputRef={settingsRef.machineSpeed}
+                            defaultValue='1.25'
+                            type="number"
+                        />
+                    </div>
+                    <div>
+                        <p>Layout</p>
+                        <TextField
+                            label="row length"
+                            variant="filled"
+                            inputRef={settingsRef.rowLength}
+                            defaultValue='5'
+                            type="number"
+                        />
+                        <TextField
+                            label="machine space"
+                            variant="filled"
+                            inputRef={settingsRef.machineSpace}
+                            defaultValue='0'
+                            type="number"
+                        />
+                        <TextField
+                            label="row space"
+                            variant="filled"
+                            inputRef={settingsRef.rowSpace}
+                            defaultValue='0'
+                            type="number"
+                        />
+                    </div>
+                    <div>
+                        <p>Source Chest</p>
+                        <TextField
+                            label="source chest name"
+                            variant="filled"
+                            inputRef={settingsRef.sourceChestName}
+                            defaultValue='logistic-chest-requester'
+                        />
+                        <TextField
+                            label="source chest width"
+                            variant="filled"
+                            inputRef={settingsRef.sourceChestWidth}
+                            defaultValue='1'
+                            type="number"
+                        />
+                        <TextField
+                            label="source chest height"
+                            variant="filled"
+                            inputRef={settingsRef.sourceChestHeight}
+                            defaultValue='1'
+                            type="number"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    inputRef={settingsRef.requestFromBuffers}
+                                    defaultChecked={true}
+                                />
+                            }
+                            label="request from buffers"
+                        />
+                    </div>
+                    <div>
+                        <p>Target Chest</p>
+                        <TextField
+                            label="target chest name"
+                            variant="filled"
+                            inputRef={settingsRef.targetChestName}
+                            defaultValue='logistic-chest-buffer'
+                        />
+                        <TextField
+                            label="target chest width"
+                            variant="filled"
+                            inputRef={settingsRef.targetChestWidth}
+                            defaultValue='1'
+                            type="number"
+                        />
+                        <TextField
+                            label="target chest height"
+                            variant="filled"
+                            inputRef={settingsRef.targetChestHeight}
+                            defaultValue='1'
+                            type="number"
+                        />
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    inputRef={settingsRef.targetChestSetRequest}
+                                    defaultChecked={true}
+                                />
+                            }
+                            label="target chest set request"
+                        />
+                    </div>
+                    <div>
+                        <p>Inserter/Outserter</p>
+                        <TextField
+                            label="inserter name"
+                            variant="filled"
+                            inputRef={settingsRef.inserterName}
+                            defaultValue='stack-inserter'
+                        />
+                        <TextField
+                            label="outserter name"
+                            variant="filled"
+                            inputRef={settingsRef.outserterName}
+                            defaultValue='stack-inserter'
+                        />
+                    </div>
                 </AccordionDetails>
             </Accordion>
 
@@ -469,7 +664,7 @@ function App() {
                         variant="contained"
                         color="primary"
                         onClick={() => {
-                            const { bpObject, bpString } = generateOutput(filteredRecipes);
+                            const { bpObject, bpString } = generateOutput(filteredRecipes, settingsRefToSettings());
                             copy(bpString);
                             setDebugInfo({ bpObject, bpString });
                         }}
