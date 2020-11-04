@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/factorio-make-everything-generator/static/css/main.62b7f1fe.chunk.css",
+    "main.css": "/factorio-make-everything-generator/static/css/main.b865e715.chunk.css",
     "main.js": "/factorio-make-everything-generator/static/js/main.0f8f7bdd.chunk.js",
     "main.js.map": "/factorio-make-everything-generator/static/js/main.0f8f7bdd.chunk.js.map",
     "runtime-main.js": "/factorio-make-everything-generator/static/js/runtime-main.e904065d.js",
@@ -8,13 +8,13 @@
     "static/js/2.57292d1d.chunk.js": "/factorio-make-everything-generator/static/js/2.57292d1d.chunk.js",
     "static/js/2.57292d1d.chunk.js.map": "/factorio-make-everything-generator/static/js/2.57292d1d.chunk.js.map",
     "index.html": "/factorio-make-everything-generator/index.html",
-    "static/css/main.62b7f1fe.chunk.css.map": "/factorio-make-everything-generator/static/css/main.62b7f1fe.chunk.css.map",
+    "static/css/main.b865e715.chunk.css.map": "/factorio-make-everything-generator/static/css/main.b865e715.chunk.css.map",
     "static/js/2.57292d1d.chunk.js.LICENSE.txt": "/factorio-make-everything-generator/static/js/2.57292d1d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.e904065d.js",
     "static/js/2.57292d1d.chunk.js",
-    "static/css/main.62b7f1fe.chunk.css",
+    "static/css/main.b865e715.chunk.css",
     "static/js/main.0f8f7bdd.chunk.js"
   ]
 }
