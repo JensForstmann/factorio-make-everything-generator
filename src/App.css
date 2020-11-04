@@ -6,3 +6,34 @@
     cursor: pointer;
     text-align: center;
 }
+
+#footer {
+    background-color: #F0F0F0;
+    border-top: 1px solid #E7E7E7;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    height: 24px;
+    width: 100%;
+    z-index: 100;
+}
+
+#body {
+    margin-top: 128px;
+}
+
+#header {
+    background-color: #F0F0F0;
+    border-bottom: 1px solid #E7E7E7;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    height: 64px;
+    width: 100%;
+    z-index: 100;
+}
+
+a, a:hover, a:visited {
+    color: black;
+    text-decoration: underline;
+}

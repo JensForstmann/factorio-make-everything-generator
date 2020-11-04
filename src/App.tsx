@@ -429,297 +429,305 @@ function App() {
 
     return (
         <>
-            <Accordion expanded={expandedAccordion === 'MODDED QUESTION'} onChange={changeAccordion('MODDED QUESTION')}>
-                <AccordionSummary>MODDED?</AccordionSummary>
-                <AccordionDetails style={{ display: "block" }}>
-                    <Typography>
-                        Do you have moddeds items/recipes? Or do you play vanilla?
+            <div id="header">
+                <h1>Factorio "Make Everything" Generator</h1>
+            </div>
+            <div id="body">
+                <Accordion expanded={expandedAccordion === 'MODDED QUESTION'} onChange={changeAccordion('MODDED QUESTION')}>
+                    <AccordionSummary>MODDED?</AccordionSummary>
+                    <AccordionDetails style={{ display: "block" }}>
+                        <Typography>
+                            Do you have moddeds items/recipes? Or do you play vanilla?
                     </Typography>
-                    <div>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={() => changeModded(true)}
-                        >
-                            Modded
+                        <div>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={() => changeModded(true)}
+                            >
+                                Modded
                         </Button>
                         &nbsp;
                         <Button
+                                variant="contained"
+                                color="primary"
+                                onClick={() => changeModded(false)}
+                            >
+                                Vanilla
+                        </Button>
+                        </div>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={expandedAccordion === 'CHEAT COMMAND'} onChange={changeAccordion('CHEAT COMMAND')}>
+                    <AccordionSummary>CHEAT COMMAND</AccordionSummary>
+                    <AccordionDetails style={{ display: "block" }}>
+                        <Typography>
+                            Execute this cheat command ingame and find a "recipes_dump.txt" afterwards in your script-output folder of Factorio:
+                    </Typography>
+                        <Button
                             variant="contained"
                             color="primary"
-                            onClick={() => changeModded(false)}
+                            onClick={() => copy(command)}
                         >
-                            Vanilla
-                        </Button>
-                    </div>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion expanded={expandedAccordion === 'CHEAT COMMAND'} onChange={changeAccordion('CHEAT COMMAND')}>
-                <AccordionSummary>CHEAT COMMAND</AccordionSummary>
-                <AccordionDetails style={{ display: "block" }}>
-                    <Typography>
-                        Execute this cheat command ingame and find a "recipes_dump.txt" afterwards in your script-output folder of Factorio:
-                    </Typography>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => copy(command)}
-                    >
-                        <FileCopyIcon /> Copy Cheat Command
+                            <FileCopyIcon /> Copy Cheat Command
                     </Button>
-                </AccordionDetails>
-            </Accordion>
-            <Accordion expanded={expandedAccordion === 'INPUT'} onChange={changeAccordion('INPUT')}>
-                <AccordionSummary>INPUT</AccordionSummary>
-                <AccordionDetails style={{ display: "block" }}>
-                    <div>
-                        <Dropzone
-                            onDrop={files => onNewFile(files)}
-                            multiple={false}
-                            accept='text/plain'
-                        >
-                            {({ getRootProps, getInputProps }) => (
-                                <section>
-                                    <div className="dropzone" {...getRootProps()}>
-                                        <input {...getInputProps()} />
-                                        <p>drag & drop recipes_dump.txt file here</p>
-                                        <p><VerticalAlignBottomIcon fontSize="large" /></p>
-                                        <p>or click to select file</p>
-                                    </div>
-                                </section>
-                            )}
-                        </Dropzone>
-                    </div>
-                    <div>
-                        <p>Or you can simply copy the content and paste it:</p>
-                        <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-                            Paste content
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion expanded={expandedAccordion === 'INPUT'} onChange={changeAccordion('INPUT')}>
+                    <AccordionSummary>INPUT</AccordionSummary>
+                    <AccordionDetails style={{ display: "block" }}>
+                        <div>
+                            <Dropzone
+                                onDrop={files => onNewFile(files)}
+                                multiple={false}
+                                accept='text/plain'
+                            >
+                                {({ getRootProps, getInputProps }) => (
+                                    <section>
+                                        <div className="dropzone" {...getRootProps()}>
+                                            <input {...getInputProps()} />
+                                            <p>drag & drop recipes_dump.txt file here</p>
+                                            <p><VerticalAlignBottomIcon fontSize="large" /></p>
+                                            <p>or click to select file</p>
+                                        </div>
+                                    </section>
+                                )}
+                            </Dropzone>
+                        </div>
+                        <div>
+                            <p>Or you can simply copy the content and paste it:</p>
+                            <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+                                Paste content
                         </Button>
-                        <Dialog
-                            open={inputDialogOpen}
-                            onClose={() => setInputDialogOpen(false)}
-                        >
-                            <DialogTitle>Paste Content</DialogTitle>
-                            <DialogContent>
-                                <DialogContentText>
-                                    Paste content of recipes_dump.txt and press continue.
+                            <Dialog
+                                open={inputDialogOpen}
+                                onClose={() => setInputDialogOpen(false)}
+                            >
+                                <DialogTitle>Paste Content</DialogTitle>
+                                <DialogContent>
+                                    <DialogContentText>
+                                        Paste content of recipes_dump.txt and press continue.
                                 </DialogContentText>
-                                <TextField
-                                    placeholder="paste content of recipes_dump.txt here"
-                                    multiline
-                                    variant="filled"
-                                    inputRef={inputRef}
-                                    rowsMax={10}
-                                />
-                            </DialogContent>
-                            <DialogActions>
-                                <Button onClick={handleClose} color="primary">
-                                    Continue
+                                    <TextField
+                                        placeholder="paste content of recipes_dump.txt here"
+                                        multiline
+                                        variant="filled"
+                                        inputRef={inputRef}
+                                        rowsMax={10}
+                                    />
+                                </DialogContent>
+                                <DialogActions>
+                                    <Button onClick={handleClose} color="primary">
+                                        Continue
                                 </Button>
-                            </DialogActions>
-                        </Dialog>
-                    </div>
-                </AccordionDetails>
-            </Accordion>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
+                    </AccordionDetails>
+                </Accordion>
 
-            <Accordion expanded={expandedAccordion === 'RECIPES'} onChange={changeAccordion('RECIPES')}>
-                <AccordionSummary>RECIPES</AccordionSummary>
-                <AccordionDetails style={{ display: "block" }}>
-                    <MUIDataTable
-                        title={"Recipes"}
-                        data={recipes}
-                        columns={tableColumns}
-                        options={{
-                            filterType: 'multiselect',
-                            download: false,
-                            print: false,
-                            viewColumns: false,
-                            selectToolbarPlacement: 'none',
-                            onRowSelectionChange: (currentRowsSelected, allRowsSelected, rowsSelected) => updateFilteredRecipes(rowsSelected as number[]),
-                        }}
-                    />
-                </AccordionDetails>
-            </Accordion>
+                <Accordion expanded={expandedAccordion === 'RECIPES'} onChange={changeAccordion('RECIPES')}>
+                    <AccordionSummary>RECIPES</AccordionSummary>
+                    <AccordionDetails style={{ display: "block" }}>
+                        <MUIDataTable
+                            title={"Recipes"}
+                            data={recipes}
+                            columns={tableColumns}
+                            options={{
+                                filterType: 'multiselect',
+                                download: false,
+                                print: false,
+                                viewColumns: false,
+                                selectToolbarPlacement: 'none',
+                                onRowSelectionChange: (currentRowsSelected, allRowsSelected, rowsSelected) => updateFilteredRecipes(rowsSelected as number[]),
+                            }}
+                        />
+                    </AccordionDetails>
+                </Accordion>
 
-            <Accordion expanded={expandedAccordion === 'SETTINGS'} onChange={changeAccordion('SETTINGS')}>
-                <AccordionSummary>SETTINGS</AccordionSummary>
-                <AccordionDetails style={{ display: "block" }}>
-                    <div>
-                        <p>Machine</p>
-                        <TextField
-                            label="machine name"
-                            variant="filled"
-                            inputRef={settingsRef.machineName}
-                            defaultValue='assembling-machine-3'
-                        />
-                        <TextField
-                            label="machine width"
-                            variant="filled"
-                            inputRef={settingsRef.machineWidth}
-                            defaultValue='3'
-                            type="number"
-                        />
-                        <TextField
-                            label="machine height"
-                            variant="filled"
-                            inputRef={settingsRef.machineHeight}
-                            defaultValue='3'
-                            type="number"
-                        />
-                        <TextField
-                            label="machine speed"
-                            variant="filled"
-                            inputRef={settingsRef.machineSpeed}
-                            defaultValue='1.25'
-                            type="number"
-                        />
-                    </div>
-                    <div>
-                        <p>Layout</p>
-                        <TextField
-                            label="row length"
-                            variant="filled"
-                            inputRef={settingsRef.rowLength}
-                            defaultValue='5'
-                            type="number"
-                        />
-                        <TextField
-                            label="machine space"
-                            variant="filled"
-                            inputRef={settingsRef.machineSpace}
-                            defaultValue='0'
-                            type="number"
-                        />
-                        <TextField
-                            label="row space"
-                            variant="filled"
-                            inputRef={settingsRef.rowSpace}
-                            defaultValue='0'
-                            type="number"
-                        />
-                    </div>
-                    <div>
-                        <p>Source Chest</p>
-                        <TextField
-                            label="source chest name"
-                            variant="filled"
-                            inputRef={settingsRef.sourceChestName}
-                            defaultValue='logistic-chest-requester'
-                        />
-                        <TextField
-                            label="source chest width"
-                            variant="filled"
-                            inputRef={settingsRef.sourceChestWidth}
-                            defaultValue='1'
-                            type="number"
-                        />
-                        <TextField
-                            label="source chest height"
-                            variant="filled"
-                            inputRef={settingsRef.sourceChestHeight}
-                            defaultValue='1'
-                            type="number"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    inputRef={settingsRef.requestFromBuffers}
-                                    defaultChecked={true}
-                                />
-                            }
-                            label="request from buffers"
-                        />
-                    </div>
-                    <div>
-                        <p>Target Chest</p>
-                        <TextField
-                            label="target chest name"
-                            variant="filled"
-                            inputRef={settingsRef.targetChestName}
-                            defaultValue='logistic-chest-buffer'
-                        />
-                        <TextField
-                            label="target chest width"
-                            variant="filled"
-                            inputRef={settingsRef.targetChestWidth}
-                            defaultValue='1'
-                            type="number"
-                        />
-                        <TextField
-                            label="target chest height"
-                            variant="filled"
-                            inputRef={settingsRef.targetChestHeight}
-                            defaultValue='1'
-                            type="number"
-                        />
-                        <FormControlLabel
-                            control={
-                                <Checkbox
-                                    inputRef={settingsRef.targetChestSetRequest}
-                                    defaultChecked={true}
-                                />
-                            }
-                            label="target chest set request"
-                        />
-                    </div>
-                    <div>
-                        <p>Inserter/Outserter</p>
-                        <TextField
-                            label="inserter name"
-                            variant="filled"
-                            inputRef={settingsRef.inserterName}
-                            defaultValue='stack-inserter'
-                        />
-                        <TextField
-                            label="outserter name"
-                            variant="filled"
-                            inputRef={settingsRef.outserterName}
-                            defaultValue='stack-inserter'
-                        />
-                    </div>
-                </AccordionDetails>
-            </Accordion>
+                <Accordion expanded={expandedAccordion === 'SETTINGS'} onChange={changeAccordion('SETTINGS')}>
+                    <AccordionSummary>SETTINGS</AccordionSummary>
+                    <AccordionDetails style={{ display: "block" }}>
+                        <div>
+                            <p>Machine</p>
+                            <TextField
+                                label="machine name"
+                                variant="filled"
+                                inputRef={settingsRef.machineName}
+                                defaultValue='assembling-machine-3'
+                            />
+                            <TextField
+                                label="machine width"
+                                variant="filled"
+                                inputRef={settingsRef.machineWidth}
+                                defaultValue='3'
+                                type="number"
+                            />
+                            <TextField
+                                label="machine height"
+                                variant="filled"
+                                inputRef={settingsRef.machineHeight}
+                                defaultValue='3'
+                                type="number"
+                            />
+                            <TextField
+                                label="machine speed"
+                                variant="filled"
+                                inputRef={settingsRef.machineSpeed}
+                                defaultValue='1.25'
+                                type="number"
+                            />
+                        </div>
+                        <div>
+                            <p>Layout</p>
+                            <TextField
+                                label="row length"
+                                variant="filled"
+                                inputRef={settingsRef.rowLength}
+                                defaultValue='5'
+                                type="number"
+                            />
+                            <TextField
+                                label="machine space"
+                                variant="filled"
+                                inputRef={settingsRef.machineSpace}
+                                defaultValue='0'
+                                type="number"
+                            />
+                            <TextField
+                                label="row space"
+                                variant="filled"
+                                inputRef={settingsRef.rowSpace}
+                                defaultValue='0'
+                                type="number"
+                            />
+                        </div>
+                        <div>
+                            <p>Source Chest</p>
+                            <TextField
+                                label="source chest name"
+                                variant="filled"
+                                inputRef={settingsRef.sourceChestName}
+                                defaultValue='logistic-chest-requester'
+                            />
+                            <TextField
+                                label="source chest width"
+                                variant="filled"
+                                inputRef={settingsRef.sourceChestWidth}
+                                defaultValue='1'
+                                type="number"
+                            />
+                            <TextField
+                                label="source chest height"
+                                variant="filled"
+                                inputRef={settingsRef.sourceChestHeight}
+                                defaultValue='1'
+                                type="number"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        inputRef={settingsRef.requestFromBuffers}
+                                        defaultChecked={true}
+                                    />
+                                }
+                                label="request from buffers"
+                            />
+                        </div>
+                        <div>
+                            <p>Target Chest</p>
+                            <TextField
+                                label="target chest name"
+                                variant="filled"
+                                inputRef={settingsRef.targetChestName}
+                                defaultValue='logistic-chest-buffer'
+                            />
+                            <TextField
+                                label="target chest width"
+                                variant="filled"
+                                inputRef={settingsRef.targetChestWidth}
+                                defaultValue='1'
+                                type="number"
+                            />
+                            <TextField
+                                label="target chest height"
+                                variant="filled"
+                                inputRef={settingsRef.targetChestHeight}
+                                defaultValue='1'
+                                type="number"
+                            />
+                            <FormControlLabel
+                                control={
+                                    <Checkbox
+                                        inputRef={settingsRef.targetChestSetRequest}
+                                        defaultChecked={true}
+                                    />
+                                }
+                                label="target chest set request"
+                            />
+                        </div>
+                        <div>
+                            <p>Inserter/Outserter</p>
+                            <TextField
+                                label="inserter name"
+                                variant="filled"
+                                inputRef={settingsRef.inserterName}
+                                defaultValue='stack-inserter'
+                            />
+                            <TextField
+                                label="outserter name"
+                                variant="filled"
+                                inputRef={settingsRef.outserterName}
+                                defaultValue='stack-inserter'
+                            />
+                        </div>
+                    </AccordionDetails>
+                </Accordion>
 
-            <Accordion expanded={expandedAccordion === 'GENERATE'} onChange={changeAccordion('GENERATE')}>
-                <AccordionSummary>GENERATE</AccordionSummary>
-                <AccordionDetails style={{ display: "block" }}>
-                    <Button
-                        variant="contained"
-                        color="primary"
-                        onClick={() => {
-                            const { bpObject, bpString } = generateOutput(filteredRecipes, settingsRefToSettings());
-                            copy(bpString);
-                            setDebugInfo({ bpObject, bpString });
-                        }}
-                    >
-                        <FileCopyIcon /> Copy Blueprint
+                <Accordion expanded={expandedAccordion === 'GENERATE'} onChange={changeAccordion('GENERATE')}>
+                    <AccordionSummary>GENERATE</AccordionSummary>
+                    <AccordionDetails style={{ display: "block" }}>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={() => {
+                                const { bpObject, bpString } = generateOutput(filteredRecipes, settingsRefToSettings());
+                                copy(bpString);
+                                setDebugInfo({ bpObject, bpString });
+                            }}
+                        >
+                            <FileCopyIcon /> Copy Blueprint
                     </Button>
-                </AccordionDetails>
-            </Accordion>
+                    </AccordionDetails>
+                </Accordion>
 
-            <Accordion expanded={expandedAccordion === 'DEBUG AREA'} onChange={changeAccordion('DEBUG AREA')}>
-                <AccordionSummary>DEBUG AREA</AccordionSummary>
-                <AccordionDetails style={{ display: "block" }}>
-                    <div>
-                        <TextField
-                            label="BP Object"
-                            multiline
-                            variant="filled"
-                            value={JSON.stringify(debugInfo.bpObject, null, 2)}
-                            rowsMax={10}
-                        />
-                    </div>
-                    <div>
-                        <TextField
-                            label="BP String"
-                            multiline
-                            variant="filled"
-                            value={debugInfo.bpString}
-                            rowsMax={10}
-                        />
-                    </div>
-                </AccordionDetails>
-            </Accordion>
+                <Accordion expanded={expandedAccordion === 'DEBUG AREA'} onChange={changeAccordion('DEBUG AREA')}>
+                    <AccordionSummary>DEBUG AREA</AccordionSummary>
+                    <AccordionDetails style={{ display: "block" }}>
+                        <div>
+                            <TextField
+                                label="BP Object"
+                                multiline
+                                variant="filled"
+                                value={JSON.stringify(debugInfo.bpObject, null, 2)}
+                                rowsMax={10}
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                label="BP String"
+                                multiline
+                                variant="filled"
+                                value={debugInfo.bpString}
+                                rowsMax={10}
+                            />
+                        </div>
+                    </AccordionDetails>
+                </Accordion>
+            </div>
+            <div id="footer">
+                <a href="https://github.com/JensForstmann/factorio-make-everything-generator">GitHub</a>
+            </div>
         </>
     );
 }
