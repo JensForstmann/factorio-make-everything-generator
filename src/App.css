@@ -1,24 +1,26 @@
 #header {
-    background-color: #F0F0F0;
-    border-bottom: 1px solid #E7E7E7;
-    padding: 20px;
-    height: 168px;
-    width: calc(100% - 40px);
+	background-color: #f0f0f0;
+	border-bottom: 1px solid #e7e7e7;
+	padding: 20px;
+	height: 168px;
+	width: calc(100% - 40px);
 }
 
 #footer {
-    background-color: #F0F0F0;
-    border-top: 1px solid #E7E7E7;
-    padding: 20px;
-    height: 24px;
-    width: calc(100% - 40px);
+	background-color: #f0f0f0;
+	border-top: 1px solid #e7e7e7;
+	padding: 20px;
+	height: 24px;
+	width: calc(100% - 40px);
 }
 
-a, a:hover, a:visited {
-    color: black;
-    text-decoration: underline;
+a,
+a:hover,
+a:visited {
+	color: black;
+	text-decoration: underline;
 }
 
 #copyBlueprintButton {
-    margin: 16px;
+	margin: 16px;
 }
