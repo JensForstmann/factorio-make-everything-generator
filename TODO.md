@@ -5,5 +5,4 @@ TODO:
 - hide uncraftable recipes somehow (e.g. plane)
 - not use ------- as delimiter
 - read inserter/machines/chests from cheat command and include in dump (would make many advanced settings obsolete)
-- make blueprint prettier (icons, description, title)
 - limit inserter (instead of outserter) or make it a setting
