@@ -39,6 +39,8 @@ class App extends React.Component<Props, State> {
 			targetChestHeight: 1,
 			inserterName: 'stack-inserter',
 			outserterName: 'stack-inserter',
+			requestStackLimit: 3,
+			craftStackLimit: 4,
 		},
 		activePanel: 'RECIPES',
 		recipes: [],

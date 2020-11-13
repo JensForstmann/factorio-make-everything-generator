@@ -2,38 +2,59 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import MUIDataTable from 'mui-datatables';
 import RecipesImport from './RecipesImport';
+import { RECIPE_DELIMITER } from './CheatCommand';
 
 import './RecipesPanel.css';
 
 export function parseDump(input: string) {
-	const recipesInput = input.split('-----');
+	const recipesInput = input.split(RECIPE_DELIMITER);
 
 	const recipes: Recipe[] = [];
 	for (let i = 0; i < recipesInput.length; i++) {
 		const recipeInput = recipesInput[i].trim();
 		const lines = recipeInput.split('\n');
-		const recipe = {
-			item_ingredients: [],
-		} as any;
+		const recipe = {} as { [key: string]: any };
+		const item_ingredients: ItemIngredient[] = [];
 
-		let isValid = false;
 		for (let l = 0; l < lines.length; l++) {
 			const line = lines[l].trim();
 			if (line) {
-				isValid = true;
 				const parts = line.split(':');
 				const key = parts.shift();
 				const value = parts.join(':').trim();
 				if (key === 'item_ingredient_name') {
-					recipe.item_ingredients.push(value);
+					const [count, name, stack_size] = value.split(' ');
+					item_ingredients.push({
+						count: parseInt(count),
+						name: name,
+						stack_size: parseInt(stack_size),
+					});
 				} else {
-					recipe[key as any] = value;
+					(recipe as any)[key as any] = value;
 				}
 			}
 		}
 
-		if (isValid) {
-			recipes.push(recipe);
+		const realRecipe: Recipe = {
+			name: recipe.name + '',
+			enabled: recipe.enabled === 'true',
+			category: recipe.category + '',
+			order: recipe.order + '',
+			energy: parseFloat(recipe.energy),
+			group_name: recipe.group_name + '',
+			group_order: recipe.group_order + '',
+			subgroup_name: recipe.subgroup_name + '',
+			subgroup_order: recipe.subgroup_order + '',
+			request_paste_multiplier: parseFloat(recipe.request_paste_multiplier),
+			can_be_researched: recipe.can_be_researched === 'true',
+			main_product: recipe.main_product,
+			main_product_stack_size: recipe.main_product
+				? parseInt(recipe.main_product_stack_size)
+				: undefined,
+			item_ingredients: item_ingredients,
+		};
+		if (realRecipe.enabled || realRecipe.can_be_researched) {
+			recipes.push(realRecipe);
 		}
 	}
 	recipes.sort((a, b) => {
@@ -51,11 +72,15 @@ export function parseDump(input: string) {
 	};
 }
 
+type ItemIngredient = {
+	count: number;
+	name: string;
+	stack_size: number;
+};
+
 export type Recipe = {
 	name: string;
 	enabled: boolean;
-	hidden: boolean;
-	unlock_results: boolean;
 	category: string;
 	order: string;
 	energy: number;
@@ -64,9 +89,10 @@ export type Recipe = {
 	subgroup_name: string;
 	subgroup_order: string;
 	request_paste_multiplier: number;
-	main_product: string;
-	main_product_stack_size: number;
-	item_ingredients: string[];
+	can_be_researched: boolean;
+	main_product?: string;
+	main_product_stack_size?: number;
+	item_ingredients: ItemIngredient[];
 };
 
 const TABLE_COLUMNS = [

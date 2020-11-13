@@ -1,35 +1,51 @@
-const CheatCommand = `/c local recipes = ""
+export const RECIPE_DELIMITER = '^°*#+=~-._.-~=+#*°^';
+
+export const CHEAT_COMMAND = `/c
+local EOL = "\\n"
+local recipe_delimiter = "${RECIPE_DELIMITER}"
+local recipes_dump = ""
+local can_be_researched = {}
+for _, tech in pairs(game.technology_prototypes) do
+        for i, effect in ipairs(tech.effects) do
+            if effect.type == "unlock-recipe" then
+                can_be_researched[effect.recipe] = true
+            end
+        end
+end
 for _, recipe in pairs(game.player.force.recipes) do
     local recipe_prototype = recipe.prototype
-    local recipe = "-----\\n"
-        .. "name: " .. recipe_prototype.name .. "\\n"
-        .. "enabled: " .. tostring(recipe.enabled) .. "\\n"
-        .. "hidden: " .. tostring(recipe.hidden) .. "\\n"
-        .. "unlock_results: " .. tostring(recipe_prototype.unlock_results) .. "\\n"
-        .. "category: " .. recipe_prototype.category .. "\\n"
-        .. "order: " .. recipe_prototype.order .. "\\n"
-        .. "energy: " .. recipe_prototype.energy .. "\\n"
-        .. "group_name: " .. recipe_prototype.group.name .. "\\n"
-        .. "group_order: " .. recipe_prototype.group.order .. "\\n"
-        .. "subgroup_name: " .. recipe_prototype.subgroup.name .. "\\n"
-        .. "subgroup_order: " .. recipe_prototype.subgroup.order .. "\\n"
-        .. "request_paste_multiplier: " .. recipe_prototype.request_paste_multiplier .. "\\n"
+    local recipe_str = ""
+        .. "name: " .. recipe_prototype.name .. EOL
+        .. "enabled: " .. tostring(recipe.enabled) .. EOL
+        .. "category: " .. recipe_prototype.category .. EOL
+        .. "order: " .. recipe_prototype.order .. EOL
+        .. "energy: " .. recipe_prototype.energy .. EOL
+        .. "group_name: " .. recipe_prototype.group.name .. EOL
+        .. "group_order: " .. recipe_prototype.group.order .. EOL
+        .. "subgroup_name: " .. recipe_prototype.subgroup.name .. EOL
+        .. "subgroup_order: " .. recipe_prototype.subgroup.order .. EOL
+        .. "request_paste_multiplier: " .. recipe_prototype.request_paste_multiplier .. EOL
+    if can_be_researched[recipe_prototype.name] then
+        recipe_str = recipe_str .. "can_be_researched: true" .. EOL
+    else
+        recipe_str = recipe_str .. "can_be_researched: false" .. EOL
+    end
     if recipe_prototype.main_product then
-        recipe = recipe
-            .. "main_product: " .. recipe_prototype.main_product.name .. "\\n"
+        recipe_str = recipe_str
+            .. "main_product: " .. recipe_prototype.main_product.name .. EOL
         if game.item_prototypes[recipe_prototype.main_product.name] then
-            recipe = recipe
-                .. "main_product_stack_size: " .. game.item_prototypes[recipe_prototype.main_product.name].stack_size .. "\\n"
+            recipe_str = recipe_str
+                .. "main_product_stack_size: " .. game.item_prototypes[recipe_prototype.main_product.name].stack_size .. EOL
         end
     end
-        
     for _, ing in pairs(recipe_prototype.ingredients) do
         if game.item_prototypes[ing.name] then
-            recipe = recipe .. "item_ingredient_name: " .. ing.amount .. " " .. ing.name .. "\\n"
+            recipe_str = recipe_str .. "item_ingredient_name: " .. ing.amount .. " " .. ing.name .. " " .. game.item_prototypes[ing.name].stack_size .. EOL
         end
     end
-    recipes = recipes .. "\\n" .. recipe
+    recipes_dump = recipes_dump .. recipe_str .. EOL .. recipe_delimiter .. EOL .. EOL
 end
-game.write_file("recipes_dump.txt", recipes)`;
+game.write_file("recipes_dump.txt", recipes_dump)
+`;
 
-export default CheatCommand;
+export default CHEAT_COMMAND;

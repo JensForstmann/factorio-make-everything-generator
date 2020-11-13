@@ -7,7 +7,7 @@ export type BlueprintOutput = {
 	blueprintObject: any;
 };
 
-export function generateBlueprint(recipes: Recipe[], settings: Settings): BlueprintOutput {
+export function generateBlueprint(selectedRecipes: Recipe[], settings: Settings): BlueprintOutput {
 	const {
 		machineName,
 		machineWidth,
@@ -26,6 +26,8 @@ export function generateBlueprint(recipes: Recipe[], settings: Settings): Bluepr
 		targetChestHeight,
 		inserterName,
 		outserterName,
+		requestStackLimit,
+		craftStackLimit,
 	} = settings;
 
 	const bpObject = {
@@ -71,8 +73,8 @@ export function generateBlueprint(recipes: Recipe[], settings: Settings): Bluepr
 
 	const entities: any[] = bpObject.blueprint.entities;
 
-	for (let i = 0; i < recipes.length; i++) {
-		const recipe = recipes[i];
+	for (let i = 0; i < selectedRecipes.length; i++) {
+		const recipe = selectedRecipes[i];
 
 		const row = Math.floor(i / rowLength);
 		const machineInRow = i % rowLength;
@@ -110,18 +112,20 @@ export function generateBlueprint(recipes: Recipe[], settings: Settings): Bluepr
 				x: x + 0.5 + sourceChestWidth,
 				y: y + machineHeight + 0.5,
 			},
-			control_behavior: {
+		} as any;
+		if (recipe.main_product && recipe.main_product_stack_size) {
+			outserter.control_behavior = {
 				logistic_condition: {
 					first_signal: {
 						type: 'item',
 						name: recipe.main_product,
 					},
-					constant: recipe.main_product_stack_size,
+					constant: recipe.main_product_stack_size * craftStackLimit,
 					comparator: '<',
 				},
 				connect_to_logistic_network: true,
-			},
-		};
+			};
+		}
 
 		const sourceChest = {
 			entity_number: 5 * i + 4,
@@ -131,17 +135,26 @@ export function generateBlueprint(recipes: Recipe[], settings: Settings): Bluepr
 				y: y + machineHeight + 1 + sourceChestHeight / 2,
 			},
 			request_filters: recipe.item_ingredients.map((ing, i) => {
-				const count = parseInt(ing.split(' ')[0]);
-				const name = ing.split(' ')[1];
+				const count = ing.count;
+				const name = ing.name;
+				const stack_size = ing.stack_size;
 				return {
 					index: i + 1,
 					name: name,
 					count:
 						recipe.request_paste_multiplier === 1
 							? count
-							: Math.floor(
-									(count * recipe.request_paste_multiplier * machineSpeed) /
-										recipe.energy
+							: Math.max(
+									1,
+									Math.min(
+										stack_size * requestStackLimit,
+										Math.floor(
+											(count *
+												recipe.request_paste_multiplier *
+												machineSpeed) /
+												recipe.energy
+										)
+									)
 							  ),
 				};
 			}),
@@ -157,12 +170,12 @@ export function generateBlueprint(recipes: Recipe[], settings: Settings): Bluepr
 			},
 		};
 
-		if (targetChestSetRequest) {
+		if (targetChestSetRequest && recipe.main_product) {
 			(targetChest as any).request_filters = [
 				{
 					index: 1,
 					name: recipe.main_product,
-					count: recipe.main_product_stack_size * 10,
+					count: 50000,
 				},
 			];
 		}

@@ -10,7 +10,7 @@ import copy from 'copy-to-clipboard';
 import VerticalAlignBottomIcon from '@material-ui/icons/VerticalAlignBottom';
 import { parseDump, Recipe } from './RecipesPanel';
 import { Typography } from '@material-ui/core';
-import CheatCommand from './CheatCommand';
+import CHEAT_COMMAND from './CheatCommand';
 
 import './RecipesImport.css';
 
@@ -43,7 +43,7 @@ class RecipesImport extends React.Component<Props, {}> {
 					<Button
 						variant="contained"
 						color="primary"
-						onClick={() => copy(CheatCommand)}
+						onClick={() => copy(CHEAT_COMMAND)}
 						id="copyCheatCommandButton"
 					>
 						<FileCopyIcon /> Copy Cheat Command

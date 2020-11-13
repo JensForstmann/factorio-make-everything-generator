@@ -21,6 +21,8 @@ export type Settings = {
 	targetChestHeight: number;
 	inserterName: string;
 	outserterName: string;
+	craftStackLimit: number;
+	requestStackLimit: number;
 };
 
 type Props = {
@@ -173,6 +175,27 @@ class SettingsPanel extends React.Component<Props, {}> {
 						variant="filled"
 						value={this.props.settings.outserterName}
 						onChange={(e) => this.props.onChange({ outserterName: e.target.value })}
+					/>
+				</div>
+				<div>
+					<p>Limits</p>
+					<TextField
+						label="request stack limit"
+						variant="filled"
+						value={this.props.settings.requestStackLimit}
+						onChange={(e) =>
+							this.props.onChange({ requestStackLimit: parseInt(e.target.value) })
+						}
+						type="number"
+					/>
+					<TextField
+						label="craft stack limit"
+						variant="filled"
+						value={this.props.settings.craftStackLimit}
+						onChange={(e) =>
+							this.props.onChange({ craftStackLimit: parseInt(e.target.value) })
+						}
+						type="number"
 					/>
 				</div>
 			</>
