@@ -1,4 +1,10 @@
-import { Accordion, AccordionDetails, AccordionSummary, Button } from '@material-ui/core';
+import {
+	Accordion,
+	AccordionDetails,
+	AccordionSummary,
+	Button,
+	Typography,
+} from '@material-ui/core';
 import React from 'react';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 import SettingsPanel, { Settings } from './SettingsPanel';
@@ -6,17 +12,22 @@ import RecipesPanel, { Recipe, parseDump } from './RecipesPanel';
 import VanillaRecipes from './VanillaRecipes';
 import copy from 'copy-to-clipboard';
 import { generateBlueprint } from './BlueprintGeneration';
+import Help from './Help';
+import MenuBookIcon from '@material-ui/icons/MenuBook';
+import BuildIcon from '@material-ui/icons/Build';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 import './App.css';
 
 type Props = {};
 
-type Panel = 'SETTINGS' | 'RECIPES';
+type Panel = 'SETTINGS' | 'RECIPES' | 'HELP';
 
 type State = {
 	settings: Settings;
 	recipes: Recipe[];
 	activePanel: Panel | null;
+	showHelp: boolean;
 };
 
 class App extends React.Component<Props, State> {
@@ -44,6 +55,7 @@ class App extends React.Component<Props, State> {
 		},
 		activePanel: 'RECIPES',
 		recipes: [],
+		showHelp: false,
 	};
 
 	selectedRecipes: number[] = [];
@@ -105,19 +117,27 @@ class App extends React.Component<Props, State> {
 			<>
 				<div id="header">
 					<h1>"Make Everything" Generator for Factorio</h1>
-					<p>
-						This app can be used to build bot based malls/hubs.
-						<br />
-						<br />
-						It's under development and still in an early stage.
-					</p>
+					<Typography>This app can be used to build bot based malls/hubs.</Typography>
 				</div>
 				<div id="body">
+					<Accordion
+						expanded={this.state.activePanel === 'HELP'}
+						onChange={(e, expanded) => this.showPanel('HELP', expanded)}
+					>
+						<AccordionSummary>
+							<MenuBookIcon /> HELP / EXAMPLE
+						</AccordionSummary>
+						<AccordionDetails style={{ display: 'block' }}>
+							<Help></Help>
+						</AccordionDetails>
+					</Accordion>
 					<Accordion
 						expanded={this.state.activePanel === 'RECIPES'}
 						onChange={(e, expanded) => this.showPanel('RECIPES', expanded)}
 					>
-						<AccordionSummary>RECIPES</AccordionSummary>
+						<AccordionSummary>
+							<BuildIcon /> RECIPES
+						</AccordionSummary>
 						<AccordionDetails style={{ display: 'block' }}>
 							<RecipesPanel
 								recipes={this.state.recipes}
@@ -130,7 +150,9 @@ class App extends React.Component<Props, State> {
 						expanded={this.state.activePanel === 'SETTINGS'}
 						onChange={(e, expanded) => this.showPanel('SETTINGS', expanded)}
 					>
-						<AccordionSummary>SETTINGS</AccordionSummary>
+						<AccordionSummary>
+							<SettingsIcon /> SETTINGS
+						</AccordionSummary>
 						<AccordionDetails style={{ display: 'block' }}>
 							<SettingsPanel
 								settings={this.state.settings}
@@ -154,6 +176,7 @@ class App extends React.Component<Props, State> {
 					</Button>
 				</div>
 				<div id="footer">
+					This app is in development and still in an early stage. Source code available on{' '}
 					<a href="https://github.com/JensForstmann/factorio-make-everything-generator">
 						GitHub
 					</a>
