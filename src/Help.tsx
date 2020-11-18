@@ -28,13 +28,13 @@ class Help extends React.Component<Props, {}> {
 					<img src={ResultImage2} alt="requester chest" />
 				</Typography>
 				<Typography>
-					The outserver will prevent producing too much of one item.
+					The outserter will prevent producing too much of one item.
 					<br />
-					<img src={ResultImage3} alt="outserver" />
+					<img src={ResultImage3} alt="outserter" />
 				</Typography>
 				<Typography>
-					The buffer chest will request the product so manually picking up items is easy
-					as always.
+					The buffer chest will request the product so manually picking up items is as
+					easy as always.
 					<br />
 					<img src={ResultImage4} alt="buffer chest" />
 				</Typography>

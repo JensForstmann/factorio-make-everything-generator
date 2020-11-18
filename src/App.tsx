@@ -176,10 +176,11 @@ class App extends React.Component<Props, State> {
 					</Button>
 				</div>
 				<div id="footer">
-					This app is in development and still in an early stage. Source code available on{' '}
+					Source code available on{' '}
 					<a href="https://github.com/JensForstmann/factorio-make-everything-generator">
 						GitHub
 					</a>
+					. Feel free to report bugs or request features there.
 				</div>
 			</>
 		);
