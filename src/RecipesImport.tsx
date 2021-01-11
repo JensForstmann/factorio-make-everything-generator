@@ -6,6 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
+import OpenInNewIcon from '@material-ui/icons/OpenInNew';
 import copy from 'copy-to-clipboard';
 import VerticalAlignBottomIcon from '@material-ui/icons/VerticalAlignBottom';
 import { parseDump, Recipe } from './RecipesPanel';
@@ -50,7 +51,15 @@ class RecipesImport extends React.Component<Props, {}> {
 					</Button>
 					<Typography>
 						Copy this cheat command and execute it ingame.
-						<br />A file called "recipes_dump.txt" will be created in your script-output
+						<br />A file called "recipes_dump.txt" will be created in your{' '}
+						<a
+							href="https://wiki.factorio.com/Application_directory"
+							target="_blank"
+							rel="noreferrer"
+						>
+							script-output
+							<OpenInNewIcon fontSize="small" className="openInNewIcon" />
+						</a>{' '}
 						folder of Factorio which you must drop below.
 					</Typography>
 					<Dropzone

@@ -11,3 +11,7 @@
 	cursor: pointer;
 	text-align: center;
 }
+
+.openInNewIcon {
+	font-size: 1em !important;
+}
