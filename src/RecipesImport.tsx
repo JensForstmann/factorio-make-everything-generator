@@ -1,16 +1,16 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
-import OpenInNewIcon from '@material-ui/icons/OpenInNew';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import copy from 'copy-to-clipboard';
-import VerticalAlignBottomIcon from '@material-ui/icons/VerticalAlignBottom';
+import VerticalAlignBottomIcon from '@mui/icons-material/VerticalAlignBottom';
 import { parseDump, Recipe } from './RecipesPanel';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import CHEAT_COMMAND from './CheatCommand';
 
 import './RecipesImport.css';

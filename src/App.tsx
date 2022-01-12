@@ -1,23 +1,20 @@
-import {
-	Accordion,
-	AccordionDetails,
-	AccordionSummary,
-	Button,
-	Typography,
-} from '@material-ui/core';
+import { Accordion, AccordionDetails, AccordionSummary, Button, Typography } from '@mui/material';
 import React from 'react';
-import FileCopyIcon from '@material-ui/icons/FileCopy';
+import FileCopyIcon from '@mui/icons-material/FileCopy';
 import SettingsPanel, { Settings } from './SettingsPanel';
 import RecipesPanel, { Recipe, parseDump } from './RecipesPanel';
 import VanillaRecipes from './VanillaRecipes';
 import copy from 'copy-to-clipboard';
 import { generateBlueprint } from './BlueprintGeneration';
 import Help from './Help';
-import MenuBookIcon from '@material-ui/icons/MenuBook';
-import BuildIcon from '@material-ui/icons/Build';
-import SettingsIcon from '@material-ui/icons/Settings';
-
+import MenuBookIcon from '@mui/icons-material/MenuBook';
+import BuildIcon from '@mui/icons-material/Build';
+// import SettingsIcon from '@mui/icons-material/Settings';
+import SettingsIcon from '@mui/icons-material/Settings';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import './App.css';
+
+const theme = createTheme();
 
 type Props = {};
 
@@ -114,7 +111,7 @@ class App extends React.Component<Props, State> {
 
 	render() {
 		return (
-			<>
+			<ThemeProvider theme={theme}>
 				<div id="header">
 					<h1>"Make Everything" Generator for Factorio</h1>
 					<Typography>This app can be used to build bot based malls/hubs.</Typography>
@@ -182,7 +179,7 @@ class App extends React.Component<Props, State> {
 					</a>
 					. Feel free to report bugs or request features there.
 				</div>
-			</>
+			</ThemeProvider>
 		);
 	}
 }

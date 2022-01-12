@@ -1,5 +1,6 @@
 import { Settings } from './SettingsPanel';
 import { Recipe } from './RecipesPanel';
+import { Buffer } from 'buffer';
 import Pako from 'pako';
 
 export type BlueprintOutput = {

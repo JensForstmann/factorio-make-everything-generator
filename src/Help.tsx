@@ -1,4 +1,4 @@
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import React from 'react';
 import ResultImage1 from './result_1.png';
 import ResultImage2 from './result_2.png';

@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import MUIDataTable from 'mui-datatables';
 import RecipesImport from './RecipesImport';
 import { RECIPE_DELIMITER } from './CheatCommand';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Checkbox, FormControlLabel, TextField } from '@material-ui/core';
+import { Checkbox, FormControlLabel, TextField } from '@mui/material';
 
 import './SettingsPanel.css';
 
