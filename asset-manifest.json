@@ -1,24 +1,17 @@
 {
   "files": {
-    "main.css": "/factorio-make-everything-generator/static/css/main.0c138168.chunk.css",
-    "main.js": "/factorio-make-everything-generator/static/js/main.acaea2c0.chunk.js",
-    "main.js.map": "/factorio-make-everything-generator/static/js/main.acaea2c0.chunk.js.map",
-    "runtime-main.js": "/factorio-make-everything-generator/static/js/runtime-main.e904065d.js",
-    "runtime-main.js.map": "/factorio-make-everything-generator/static/js/runtime-main.e904065d.js.map",
-    "static/js/2.1df1633d.chunk.js": "/factorio-make-everything-generator/static/js/2.1df1633d.chunk.js",
-    "static/js/2.1df1633d.chunk.js.map": "/factorio-make-everything-generator/static/js/2.1df1633d.chunk.js.map",
+    "main.css": "/factorio-make-everything-generator/static/css/main.cfa34c04.css",
+    "main.js": "/factorio-make-everything-generator/static/js/main.4953ef3a.js",
+    "static/media/result_1.png": "/factorio-make-everything-generator/static/media/result_1.06ded846cdd86070a73e.png",
+    "static/media/result_3.png": "/factorio-make-everything-generator/static/media/result_3.63e7504b6343ad5ccb1f.png",
+    "static/media/result_2.png": "/factorio-make-everything-generator/static/media/result_2.8ecaa16fab562c3d9c49.png",
+    "static/media/result_4.png": "/factorio-make-everything-generator/static/media/result_4.c0c30c085dbf148e4e35.png",
     "index.html": "/factorio-make-everything-generator/index.html",
-    "static/css/main.0c138168.chunk.css.map": "/factorio-make-everything-generator/static/css/main.0c138168.chunk.css.map",
-    "static/js/2.1df1633d.chunk.js.LICENSE.txt": "/factorio-make-everything-generator/static/js/2.1df1633d.chunk.js.LICENSE.txt",
-    "static/media/result_1.06ded846.png": "/factorio-make-everything-generator/static/media/result_1.06ded846.png",
-    "static/media/result_2.8ecaa16f.png": "/factorio-make-everything-generator/static/media/result_2.8ecaa16f.png",
-    "static/media/result_3.63e7504b.png": "/factorio-make-everything-generator/static/media/result_3.63e7504b.png",
-    "static/media/result_4.c0c30c08.png": "/factorio-make-everything-generator/static/media/result_4.c0c30c08.png"
+    "main.cfa34c04.css.map": "/factorio-make-everything-generator/static/css/main.cfa34c04.css.map",
+    "main.4953ef3a.js.map": "/factorio-make-everything-generator/static/js/main.4953ef3a.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.e904065d.js",
-    "static/js/2.1df1633d.chunk.js",
-    "static/css/main.0c138168.chunk.css",
-    "static/js/main.acaea2c0.chunk.js"
+    "static/css/main.cfa34c04.css",
+    "static/js/main.4953ef3a.js"
   ]
 }
