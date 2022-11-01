@@ -25,7 +25,7 @@ energy: 6
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: advanced-circuit
@@ -42,7 +42,7 @@ category: crafting
 order: c[combinators]-a[arithmetic-combinator]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: circuit-network
 subgroup_order: h
 request_paste_multiplier: 30
@@ -117,7 +117,7 @@ category: crafting
 order: a[train-system]-i[artillery-wagon]
 energy: 4
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: train-transport
 subgroup_order: e
 request_paste_multiplier: 30
@@ -216,7 +216,7 @@ energy: 5
 group_name: intermediate-products
 group_order: c
 subgroup_name: science-pack
-subgroup_order: g
+subgroup_order: h
 request_paste_multiplier: 30
 can_be_researched: false
 main_product: automation-science-pack
@@ -325,7 +325,7 @@ category: crafting
 order: a[energy]-c[big-electric-pole]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: energy-pipe-distribution
 subgroup_order: d
 request_paste_multiplier: 30
@@ -362,7 +362,7 @@ category: crafting
 order: a[burner-inserter]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: inserter
 subgroup_order: c
 request_paste_multiplier: 30
@@ -418,7 +418,7 @@ category: crafting
 order: b[personal-transport]-a[car]
 energy: 2
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: transport
 subgroup_order: f
 request_paste_multiplier: 30
@@ -437,7 +437,7 @@ category: crafting
 order: a[train-system]-g[cargo-wagon]
 energy: 1
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: train-transport
 subgroup_order: e
 request_paste_multiplier: 30
@@ -498,7 +498,7 @@ energy: 24
 group_name: intermediate-products
 group_order: c
 subgroup_name: science-pack
-subgroup_order: g
+subgroup_order: h
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: chemical-science-pack
@@ -515,7 +515,7 @@ category: crafting
 order: d[cliff-explosives]
 energy: 8
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: terrain
 subgroup_order: i
 request_paste_multiplier: 30
@@ -573,7 +573,7 @@ category: crafting-with-fluid
 order: b[concrete]-a[plain]
 energy: 10
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: terrain
 subgroup_order: i
 request_paste_multiplier: 30
@@ -591,7 +591,7 @@ category: crafting
 order: c[combinators]-c[constant-combinator]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: circuit-network
 subgroup_order: h
 request_paste_multiplier: 30
@@ -609,7 +609,7 @@ category: crafting
 order: a[robot]-b[construction-robot]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: logistic-network
 subgroup_order: g
 request_paste_multiplier: 30
@@ -629,7 +629,7 @@ energy: 0.5
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: false
 main_product: copper-cable
@@ -661,7 +661,7 @@ category: crafting
 order: c[combinators]-b[decider-combinator]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: circuit-network
 subgroup_order: h
 request_paste_multiplier: 30
@@ -846,7 +846,7 @@ energy: 10
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: electric-engine-unit
@@ -902,7 +902,7 @@ energy: 0.5
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: false
 main_product: electronic-circuit
@@ -920,7 +920,7 @@ energy: 1
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: empty-barrel
@@ -974,7 +974,7 @@ energy: 10
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: engine-unit
@@ -1083,7 +1083,7 @@ category: crafting
 order: d[loader]-c[express-loader]
 energy: 10
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -1101,7 +1101,7 @@ category: crafting-with-fluid
 order: c[splitter]-c[express-splitter]
 energy: 2
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -1120,7 +1120,7 @@ category: crafting-with-fluid
 order: a[transport-belt]-c[express-transport-belt]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -1138,7 +1138,7 @@ category: crafting-with-fluid
 order: b[underground-belt]-c[express-underground-belt]
 energy: 2
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -1156,7 +1156,7 @@ category: crafting
 order: d[fast-inserter]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: inserter
 subgroup_order: c
 request_paste_multiplier: 30
@@ -1175,7 +1175,7 @@ category: crafting
 order: d[loader]-b[fast-loader]
 energy: 3
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -1193,7 +1193,7 @@ category: crafting
 order: c[splitter]-b[fast-splitter]
 energy: 2
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -1212,7 +1212,7 @@ category: crafting
 order: a[transport-belt]-b[fast-transport-belt]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -1230,7 +1230,7 @@ category: crafting
 order: b[underground-belt]-b[fast-underground-belt]
 energy: 2
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -1248,7 +1248,7 @@ category: crafting
 order: e[filter-inserter]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: inserter
 subgroup_order: c
 request_paste_multiplier: 30
@@ -1338,7 +1338,7 @@ category: crafting
 order: a[train-system]-h[fluid-wagon]
 energy: 1.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: train-transport
 subgroup_order: e
 request_paste_multiplier: 30
@@ -1360,7 +1360,7 @@ energy: 20
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: flying-robot-frame
@@ -1415,7 +1415,7 @@ category: crafting
 order: b[wires]-b[green-wire]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: circuit-network
 subgroup_order: h
 request_paste_multiplier: 30
@@ -1470,7 +1470,7 @@ category: crafting
 order: b[concrete]-b[hazard]
 energy: 0.25
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: terrain
 subgroup_order: i
 request_paste_multiplier: 30
@@ -1542,7 +1542,7 @@ category: crafting
 order: b[inserter]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: inserter
 subgroup_order: c
 request_paste_multiplier: 30
@@ -1561,7 +1561,7 @@ category: crafting
 order: a[items]-b[iron-chest]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: storage
 subgroup_order: a
 request_paste_multiplier: 30
@@ -1580,7 +1580,7 @@ energy: 0.5
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: false
 main_product: iron-gear-wheel
@@ -1614,7 +1614,7 @@ energy: 0.5
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: false
 main_product: iron-stick
@@ -1666,7 +1666,7 @@ category: crafting
 order: c[landfill]-a[dirt]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: terrain
 subgroup_order: i
 request_paste_multiplier: 30
@@ -1719,7 +1719,7 @@ category: crafting
 order: d[loader]-a[basic-loader]
 energy: 1
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -1740,7 +1740,7 @@ category: crafting
 order: a[train-system]-f[locomotive]
 energy: 4
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: train-transport
 subgroup_order: e
 request_paste_multiplier: 30
@@ -1759,7 +1759,7 @@ category: crafting
 order: b[storage]-c[logistic-chest-active-provider]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: logistic-network
 subgroup_order: g
 request_paste_multiplier: 30
@@ -1778,7 +1778,7 @@ category: crafting
 order: b[storage]-d[logistic-chest-buffer]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: logistic-network
 subgroup_order: g
 request_paste_multiplier: 30
@@ -1797,7 +1797,7 @@ category: crafting
 order: b[storage]-c[logistic-chest-passive-provider]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: logistic-network
 subgroup_order: g
 request_paste_multiplier: 30
@@ -1816,7 +1816,7 @@ category: crafting
 order: b[storage]-e[logistic-chest-requester]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: logistic-network
 subgroup_order: g
 request_paste_multiplier: 30
@@ -1835,7 +1835,7 @@ category: crafting
 order: b[storage]-c[logistic-chest-storage]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: logistic-network
 subgroup_order: g
 request_paste_multiplier: 30
@@ -1854,7 +1854,7 @@ category: crafting
 order: a[robot]-a[logistic-robot]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: logistic-network
 subgroup_order: g
 request_paste_multiplier: 30
@@ -1874,7 +1874,7 @@ energy: 6
 group_name: intermediate-products
 group_order: c
 subgroup_name: science-pack
-subgroup_order: g
+subgroup_order: h
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: logistic-science-pack
@@ -1890,7 +1890,7 @@ category: crafting
 order: c[long-handed-inserter]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: inserter
 subgroup_order: c
 request_paste_multiplier: 30
@@ -1911,7 +1911,7 @@ energy: 20
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: low-density-structure
@@ -1943,7 +1943,7 @@ category: crafting
 order: a[energy]-b[medium-electric-pole]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: energy-pipe-distribution
 subgroup_order: d
 request_paste_multiplier: 30
@@ -1964,7 +1964,7 @@ energy: 10
 group_name: intermediate-products
 group_order: c
 subgroup_name: science-pack
-subgroup_order: g
+subgroup_order: h
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: military-science-pack
@@ -2019,7 +2019,7 @@ energy: 90
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: nuclear-fuel
@@ -2191,7 +2191,7 @@ category: crafting
 order: a[pipe]-a[pipe]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: energy-pipe-distribution
 subgroup_order: d
 request_paste_multiplier: 30
@@ -2208,7 +2208,7 @@ category: crafting
 order: a[pipe]-b[pipe-to-ground]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: energy-pipe-distribution
 subgroup_order: d
 request_paste_multiplier: 30
@@ -2252,25 +2252,6 @@ can_be_researched: true
 main_product: plastic-bar
 main_product_stack_size: 100
 item_ingredient_name: 1 coal 50
-
-^°*#+=~-._.-~=+#*°^
-
-name: player-port
-enabled: false
-category: crafting
-order: z[not-used]
-energy: 0.5
-group_name: combat
-group_order: d
-subgroup_name: defensive-structure
-subgroup_order: g
-request_paste_multiplier: 30
-can_be_researched: false
-main_product: player-port
-main_product_stack_size: 50
-item_ingredient_name: 1 iron-plate 100
-item_ingredient_name: 5 iron-gear-wheel 100
-item_ingredient_name: 10 electronic-circuit 200
 
 ^°*#+=~-._.-~=+#*°^
 
@@ -2339,7 +2320,7 @@ category: crafting
 order: d[other]-a[power-switch]
 energy: 2
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: circuit-network
 subgroup_order: h
 request_paste_multiplier: 30
@@ -2360,7 +2341,7 @@ energy: 10
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: processing-unit
@@ -2378,7 +2359,7 @@ energy: 21
 group_name: intermediate-products
 group_order: c
 subgroup_name: science-pack
-subgroup_order: g
+subgroup_order: h
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: production-science-pack
@@ -2451,7 +2432,7 @@ category: crafting
 order: d[other]-b[programmable-speaker]
 energy: 2
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: circuit-network
 subgroup_order: h
 request_paste_multiplier: 30
@@ -2471,7 +2452,7 @@ category: crafting
 order: b[pipe]-c[pump]
 energy: 2
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: energy-pipe-distribution
 subgroup_order: d
 request_paste_multiplier: 30
@@ -2529,7 +2510,7 @@ category: crafting
 order: a[train-system]-a[rail]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: train-transport
 subgroup_order: e
 request_paste_multiplier: 30
@@ -2548,7 +2529,7 @@ category: crafting
 order: a[train-system]-e[rail-signal-chain]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: train-transport
 subgroup_order: e
 request_paste_multiplier: 30
@@ -2566,7 +2547,7 @@ category: crafting
 order: a[train-system]-d[rail-signal]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: train-transport
 subgroup_order: e
 request_paste_multiplier: 30
@@ -2578,51 +2559,13 @@ item_ingredient_name: 1 electronic-circuit 200
 
 ^°*#+=~-._.-~=+#*°^
 
-name: railgun
-enabled: false
-category: crafting
-order: c[railgun]
-energy: 8
-group_name: combat
-group_order: d
-subgroup_name: gun
-subgroup_order: a
-request_paste_multiplier: 30
-can_be_researched: false
-main_product: railgun
-main_product_stack_size: 5
-item_ingredient_name: 15 copper-plate 100
-item_ingredient_name: 15 steel-plate 100
-item_ingredient_name: 10 electronic-circuit 200
-item_ingredient_name: 5 advanced-circuit 200
-
-^°*#+=~-._.-~=+#*°^
-
-name: railgun-dart
-enabled: false
-category: crafting
-order: c[railgun]
-energy: 8
-group_name: combat
-group_order: d
-subgroup_name: ammo
-subgroup_order: b
-request_paste_multiplier: 30
-can_be_researched: false
-main_product: railgun-dart
-main_product_stack_size: 200
-item_ingredient_name: 5 steel-plate 100
-item_ingredient_name: 5 electronic-circuit 200
-
-^°*#+=~-._.-~=+#*°^
-
 name: red-wire
 enabled: false
 category: crafting
 order: b[wires]-a[red-wire]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: circuit-network
 subgroup_order: h
 request_paste_multiplier: 30
@@ -2640,7 +2583,7 @@ category: crafting-with-fluid
 order: b[concrete]-c[refined]
 energy: 15
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: terrain
 subgroup_order: i
 request_paste_multiplier: 30
@@ -2659,7 +2602,7 @@ category: crafting
 order: b[concrete]-d[refined-hazard]
 energy: 0.25
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: terrain
 subgroup_order: i
 request_paste_multiplier: 30
@@ -2694,7 +2637,7 @@ category: crafting
 order: c[signal]-a[roboport]
 energy: 5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: logistic-network
 subgroup_order: g
 request_paste_multiplier: 30
@@ -2734,7 +2677,7 @@ energy: 30
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: rocket-control-unit
@@ -2752,7 +2695,7 @@ energy: 30
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: rocket-fuel
@@ -2788,7 +2731,7 @@ energy: 3
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: rocket-part
@@ -2804,9 +2747,9 @@ enabled: false
 category: crafting
 order: e[rocket-silo]
 energy: 30
-group_name: combat
-group_order: d
-subgroup_name: defensive-structure
+group_name: production
+group_order: b
+subgroup_name: space-related
 subgroup_order: g
 request_paste_multiplier: 1
 can_be_researched: true
@@ -2825,10 +2768,10 @@ enabled: false
 category: crafting
 order: m[satellite]
 energy: 5
-group_name: intermediate-products
-group_order: c
-subgroup_name: intermediate-product
-subgroup_order: f
+group_name: production
+group_order: b
+subgroup_name: space-related
+subgroup_order: g
 request_paste_multiplier: 1
 can_be_researched: true
 main_product: satellite
@@ -2905,7 +2848,7 @@ category: crafting
 order: a[energy]-a[small-electric-pole]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: energy-pipe-distribution
 subgroup_order: d
 request_paste_multiplier: 30
@@ -2923,7 +2866,7 @@ category: crafting
 order: a[light]-a[small-lamp]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: circuit-network
 subgroup_order: h
 request_paste_multiplier: 30
@@ -2933,26 +2876,6 @@ main_product_stack_size: 50
 item_ingredient_name: 1 iron-plate 100
 item_ingredient_name: 3 copper-cable 200
 item_ingredient_name: 1 electronic-circuit 200
-
-^°*#+=~-._.-~=+#*°^
-
-name: small-plane
-enabled: false
-category: crafting
-order: b[personal-transport]-x[small-plane]
-energy: 30
-group_name: logistics
-group_order: aaa
-subgroup_name: transport
-subgroup_order: f
-request_paste_multiplier: 30
-can_be_researched: false
-main_product: small-plane
-main_product_stack_size: 1
-item_ingredient_name: 100 plastic-bar 100
-item_ingredient_name: 100 battery 200
-item_ingredient_name: 200 advanced-circuit 200
-item_ingredient_name: 20 electric-engine-unit 50
 
 ^°*#+=~-._.-~=+#*°^
 
@@ -3056,7 +2979,7 @@ category: crafting
 order: b[personal-transport]-c[spidertron]-a[spider]
 energy: 10
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: transport
 subgroup_order: f
 request_paste_multiplier: 30
@@ -3080,7 +3003,7 @@ category: crafting
 order: b[personal-transport]-c[spidertron]-b[remote]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: transport
 subgroup_order: f
 request_paste_multiplier: 30
@@ -3098,7 +3021,7 @@ category: crafting
 order: c[splitter]-a[splitter]
 energy: 1
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -3117,7 +3040,7 @@ category: crafting
 order: g[stack-filter-inserter]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: inserter
 subgroup_order: c
 request_paste_multiplier: 30
@@ -3135,7 +3058,7 @@ category: crafting
 order: f[stack-inserter]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: inserter
 subgroup_order: c
 request_paste_multiplier: 30
@@ -3193,7 +3116,7 @@ category: crafting
 order: a[items]-c[steel-chest]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: storage
 subgroup_order: a
 request_paste_multiplier: 30
@@ -3245,7 +3168,7 @@ category: smelting
 order: a[stone-brick]
 energy: 3.2
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: terrain
 subgroup_order: i
 request_paste_multiplier: 30
@@ -3296,7 +3219,7 @@ category: crafting
 order: b[fluid]-a[storage-tank]
 energy: 3
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: storage
 subgroup_order: a
 request_paste_multiplier: 30
@@ -3333,7 +3256,7 @@ category: crafting
 order: a[energy]-d[substation]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: energy-pipe-distribution
 subgroup_order: d
 request_paste_multiplier: 30
@@ -3385,7 +3308,7 @@ category: crafting
 order: b[personal-transport]-b[tank]
 energy: 5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: transport
 subgroup_order: f
 request_paste_multiplier: 30
@@ -3405,7 +3328,7 @@ category: crafting
 order: a[train-system]-c[train-stop]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: train-transport
 subgroup_order: e
 request_paste_multiplier: 30
@@ -3425,7 +3348,7 @@ category: crafting
 order: a[transport-belt]-a[transport-belt]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -3443,7 +3366,7 @@ category: crafting
 order: b[underground-belt]-a[underground-belt]
 energy: 1
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: belt
 subgroup_order: b
 request_paste_multiplier: 30
@@ -3481,7 +3404,7 @@ energy: 10
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: uranium-fuel-cell
@@ -3518,7 +3441,7 @@ energy: 21
 group_name: intermediate-products
 group_order: c
 subgroup_name: science-pack
-subgroup_order: g
+subgroup_order: h
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: utility-science-pack
@@ -3535,7 +3458,7 @@ category: crafting
 order: a[items]-a[wooden-chest]
 energy: 0.5
 group_name: logistics
-group_order: aaa
+group_order: a
 subgroup_name: storage
 subgroup_order: a
 request_paste_multiplier: 30
@@ -3597,7 +3520,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: fill-barrel
-subgroup_order: d
+subgroup_order: e
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: crude-oil-barrel
@@ -3614,7 +3537,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: fill-barrel
-subgroup_order: d
+subgroup_order: e
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: heavy-oil-barrel
@@ -3631,7 +3554,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: fill-barrel
-subgroup_order: d
+subgroup_order: e
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: light-oil-barrel
@@ -3648,7 +3571,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: fill-barrel
-subgroup_order: d
+subgroup_order: e
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: lubricant-barrel
@@ -3665,7 +3588,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: fill-barrel
-subgroup_order: d
+subgroup_order: e
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: petroleum-gas-barrel
@@ -3682,7 +3605,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: fill-barrel
-subgroup_order: d
+subgroup_order: e
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: sulfuric-acid-barrel
@@ -3699,7 +3622,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: fill-barrel
-subgroup_order: d
+subgroup_order: e
 request_paste_multiplier: 30
 can_be_researched: true
 main_product: water-barrel
@@ -3792,7 +3715,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: empty-barrel
-subgroup_order: e
+subgroup_order: f
 request_paste_multiplier: 30
 can_be_researched: true
 item_ingredient_name: 1 crude-oil-barrel 10
@@ -3807,7 +3730,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: empty-barrel
-subgroup_order: e
+subgroup_order: f
 request_paste_multiplier: 30
 can_be_researched: true
 item_ingredient_name: 1 heavy-oil-barrel 10
@@ -3822,7 +3745,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: empty-barrel
-subgroup_order: e
+subgroup_order: f
 request_paste_multiplier: 30
 can_be_researched: true
 item_ingredient_name: 1 light-oil-barrel 10
@@ -3837,7 +3760,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: empty-barrel
-subgroup_order: e
+subgroup_order: f
 request_paste_multiplier: 30
 can_be_researched: true
 item_ingredient_name: 1 lubricant-barrel 10
@@ -3852,7 +3775,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: empty-barrel
-subgroup_order: e
+subgroup_order: f
 request_paste_multiplier: 30
 can_be_researched: true
 item_ingredient_name: 1 petroleum-gas-barrel 10
@@ -3867,7 +3790,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: empty-barrel
-subgroup_order: e
+subgroup_order: f
 request_paste_multiplier: 30
 can_be_researched: true
 item_ingredient_name: 1 sulfuric-acid-barrel 10
@@ -3882,7 +3805,7 @@ energy: 0.2
 group_name: intermediate-products
 group_order: c
 subgroup_name: empty-barrel
-subgroup_order: e
+subgroup_order: f
 request_paste_multiplier: 30
 can_be_researched: true
 item_ingredient_name: 1 water-barrel 10
@@ -3912,7 +3835,7 @@ energy: 60
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 item_ingredient_name: 5 used-up-uranium-fuel-cell 50
@@ -3927,7 +3850,7 @@ energy: 60
 group_name: intermediate-products
 group_order: c
 subgroup_name: intermediate-product
-subgroup_order: f
+subgroup_order: g
 request_paste_multiplier: 30
 can_be_researched: true
 item_ingredient_name: 40 uranium-235 100
