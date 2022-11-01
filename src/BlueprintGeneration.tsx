@@ -139,24 +139,23 @@ export function generateBlueprint(selectedRecipes: Recipe[], settings: Settings)
 				const count = ing.count;
 				const name = ing.name;
 				const stack_size = ing.stack_size;
+				const requestCount = Math.max(
+					1,
+					Math.floor(
+						Math.min(
+							stack_size * requestStackLimit,
+							Math.max(
+								count,
+								(count * recipe.request_paste_multiplier * machineSpeed) /
+									recipe.energy
+							)
+						)
+					)
+				);
 				return {
 					index: i + 1,
 					name: name,
-					count:
-						recipe.request_paste_multiplier === 1
-							? count
-							: Math.max(
-									1,
-									Math.min(
-										stack_size * requestStackLimit,
-										Math.floor(
-											(count *
-												recipe.request_paste_multiplier *
-												machineSpeed) /
-												recipe.energy
-										)
-									)
-							  ),
+					count: requestCount,
 				};
 			}),
 			request_from_buffers: requestFromBuffers,
