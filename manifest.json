@@ -1,9 +1,0 @@
-{
-  "short_name": "\"Make Everything\" Generator for Factorio",
-  "name": "\"Make Everything\" Generator for Factorio",
-  "icons": [],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
-}
