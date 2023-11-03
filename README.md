@@ -1,6 +1,12 @@
 # Factorio "Make Everything" Generator
 
-This app can be used to build bot based malls/hubs.
+---
 
-https://jensforstmann.github.io/factorio-make-everything-generator/
+# ARCHIVED - ARCHIVED - ARCHIVED
 
+This app has been moved to **Gaming Tools**:
+
+- Web app: https://gaming-tools.jensforstmann.vercel.app/factorio/make-everything-generator
+- Repository: https://github.com/JensForstmann/gaming-tools
+
+---
